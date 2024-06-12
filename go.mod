@@ -1,4 +1,4 @@
-module banji
+module github.com/myselfajp/banji
 
 go 1.22.0
 
