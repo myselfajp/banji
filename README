@@ -1,0 +1,44 @@
+
+# Banji Watcher
+
+## Overview
+Banji Watcher is a robust file monitoring tool designed to observe changes in your Go project files. Once it detects a modification, it automatically restarts the specified Go executable, ensuring that your development environment is always up to date with the latest changes.
+
+## Features
+- **Automatic Restart**: Automatically restarts the Go executable when a monitored file is changed.
+- **Flexible Configuration**: Allows configuration through various options to tailor the watcher to your specific needs.
+
+## Getting Started
+To use Banji Watcher, you need to configure it with the path to the Go executable you want to monitor or let it auto-detect the first executable with a `main` function (excluding any file containing `banji.Run()`).
+
+### Configuration Options
+- `banji.Flags`: Set command-line flags for the Go executable. Example: `[]string{"-dev"}`
+- `banji.MainFuncDirectory`: Specify the directory of the main function if it's different from the root. Example: `"cmd/server/runserver.go"`
+
+### Usage
+1. **Set Configuration**: Configure `banji` with the necessary options:
+   ```go
+   banji.Flags = []string{"-dev"}
+   banji.MainFuncDirectory = "cmd/server/runserver.go"
+   ```
+2. **Run the Watcher**:
+   ```go
+   banji.Run()
+   ```
+
+### Automatic File Detection
+If no executable path is provided, Banji Watcher will search the project directory for the first file containing a `main` function and use it, provided `banji.Run()` is not present in that file.
+
+## Requirements
+- Go installed on your system.
+
+## Installation
+To set up Banji Watcher, clone this repository and compile the code:
+```bash
+git clone [repository-url]
+cd [repository-directory]
+go build
+```
+
+## License
+This project is licensed under the [MIT License](LICENSE).
