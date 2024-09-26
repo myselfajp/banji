@@ -85,7 +85,9 @@ func execute() error {
 	}
 
 	go func() {
-		cmd.Wait()
+		if cmd != nil {
+			cmd.Wait()
+		}
 		cmd = nil
 	}()
 	return nil
